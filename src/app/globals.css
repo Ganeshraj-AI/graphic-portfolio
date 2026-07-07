@@ -1,26 +1,239 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FAF7F2;
+  --card-bg: #FFFDF8;
+  --primary: #7A1F2B;
+  --gold: #C89B3C;
+  --foreground: #40362F;
+  --secondary-text: #746A61;
+  --border-color: #E8DDD2;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Localized section color variables (Rooms) */
+.theme-cream {
+  --background: #FAF7F2;
+  --card-bg: #FFFDF8;
+  --primary: #7A1F2B;
+  --gold: #C89B3C;
+  --foreground: #40362F;
+  --secondary-text: #746A61;
+  --border-color: #E8DDD2;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.theme-offwhite {
+  --background: #FFFDF8;
+  --card-bg: #FAF7F2;
+  --primary: #7A1F2B;
+  --gold: #C89B3C;
+  --foreground: #40362F;
+  --secondary-text: #746A61;
+  --border-color: #E8DDD2;
+}
+
+.theme-dark {
+  --background: #161311;
+  --card-bg: #1E1A17;
+  --primary: #FAF7F2;
+  --gold: #D8AC4F;
+  --foreground: #E8DDD2;
+  --secondary-text: #A69B91;
+  --border-color: #2A231F;
+}
+
+.theme-sand {
+  --background: #E8DDD2;
+  --card-bg: #FFFDF8;
+  --primary: #7A1F2B;
+  --gold: #C89B3C;
+  --foreground: #40362F;
+  --secondary-text: #746A61;
+  --border-color: #FAF7F2;
+}
+
+/* Global Dark Mode override - forces all rooms to luxurious dark mode */
+.dark,
+.dark .theme-cream,
+.dark .theme-offwhite,
+.dark .theme-dark,
+.dark .theme-sand {
+  --background: #161311;
+  --card-bg: #1E1A17;
+  --primary: #FAF7F2;
+  --gold: #D8AC4F;
+  --foreground: #E8DDD2;
+  --secondary-text: #A69B91;
+  --border-color: #26211E;
+}
+
+@theme {
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-manrope), "Manrope", sans-serif;
+  --font-alt-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-alt-sans: var(--font-inter), "Inter", sans-serif;
+  --font-mono: var(--font-ibm-mono), "IBM Plex Mono", Courier, monospace;
+
+  --color-paper-bg: var(--background);
+  --color-paper-card: var(--card-bg);
+  --color-brand-primary: var(--primary);
+  --color-brand-gold: var(--gold);
+  --color-body-text: var(--foreground);
+  --color-secondary-text: var(--secondary-text);
+  --color-paper-border: var(--border-color);
+}
+
+html {
+  scroll-behavior: auto; /* Managed by Lenis */
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  transition: background-color 1s cubic-bezier(0.25, 1, 0.5, 1), 
+              color 1s cubic-bezier(0.25, 1, 0.5, 1),
+              border-color 1s cubic-bezier(0.25, 1, 0.5, 1);
+  overflow-x: hidden;
+}
+
+/* Subtle physical paper grain texture overlay */
+.paper-grain::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.dark .paper-grain::before {
+  opacity: 0.06;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* 1px Print Misregistration offset on hover */
+.text-misregistration {
+  transition: text-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.text-misregistration:hover {
+  text-shadow: 1px 1px 0px rgba(122, 31, 43, 0.7), -1.2px -0.8px 0px rgba(200, 155, 60, 0.7);
+}
+
+/* Outlined Experimental Typography */
+.text-outline {
+  -webkit-text-stroke: 1px currentColor;
+  color: transparent;
+}
+
+.text-outline-thick {
+  -webkit-text-stroke: 2px currentColor;
+  color: transparent;
+}
+
+/* Infinite Marquee sliding tracks */
+@keyframes marqueeLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marqueeRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 35s linear infinite;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marqueeRight 35s linear infinite;
+}
+
+.animate-marquee-left:hover,
+.animate-marquee-right:hover {
+  animation-play-state: paused;
+}
+
+/* Pinterest Masonry alignment */
+.masonry-grid {
+  column-fill: initial;
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 24px;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Custom Line Underscores */
+.underline-hover {
+  position: relative;
+}
+
+.underline-hover::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--primary);
+  transform-origin: bottom right;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.underline-hover:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Lenis Integration styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
