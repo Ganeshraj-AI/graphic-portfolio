@@ -26,7 +26,7 @@ export default function Hero({ projects }: HeroProps) {
     }
   };
 
-  // Find 2 featured projects dynamically (fallback to first 2 if none marked)
+  // Find 2 featured projects dynamically
   const featured = projects.filter((p) => p.featured).slice(0, 2);
   const heroPosters = featured.length >= 2 ? featured : projects.slice(0, 2);
 
@@ -76,15 +76,15 @@ export default function Hero({ projects }: HeroProps) {
     >
       <div className="max-w-7xl mx-auto w-full px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center flex-grow">
         
-        {/* Left Column: Bold Broken Typography Hero Heading */}
+        {/* Left Column: Bold Typography & Philosophy */}
         <div className="lg:col-span-7 flex flex-col justify-center space-y-8 z-10">
           <div className="space-y-4">
             
-            {/* Real Metadata Identifier */}
-            <div className="flex items-center gap-2 mb-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
-              <span className="font-mono text-[9px] tracking-[0.25em] uppercase text-brand-gold font-bold">
-                THE GRAPHIC ARCHIVE // GANESH RAJ
+            {/* Available for Work badge with green pulsing dot */}
+            <div className="inline-flex items-center gap-2 bg-paper-card border border-paper-border px-3.5 py-1.5 rounded-full select-none shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              <span className="font-mono text-[8px] tracking-widest uppercase text-secondary-text font-bold">
+                Available for Work
               </span>
             </div>
             
@@ -96,15 +96,15 @@ export default function Hero({ projects }: HeroProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 }}
               >
-                Designing
+                Ganesh Raj
               </motion.span>
               <motion.span
-                className="block font-sans font-black tracking-widest text-4xl sm:text-5xl md:text-6xl lg:text-7xl pl-4 py-1"
+                className="block font-sans font-black tracking-widest text-3xl sm:text-4xl md:text-5xl lg:text-6xl pl-4 py-1"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                IDEAS
+                DESIGNER
               </motion.span>
               <motion.span
                 className="block font-alt-serif italic font-normal pl-8 cursor-default text-misregistration"
@@ -112,7 +112,7 @@ export default function Hero({ projects }: HeroProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                people
+                Creating visuals that
               </motion.span>
               <motion.span
                 className="block font-sans font-medium tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl pl-12 text-brand-gold"
@@ -120,11 +120,12 @@ export default function Hero({ projects }: HeroProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                remember.
+                people remember.
               </motion.span>
             </h1>
           </div>
 
+          {/* Designer positioning text */}
           <div className="space-y-6 max-w-xl">
             <motion.p
               className="font-sans text-base md:text-lg text-secondary-text leading-relaxed font-light"
@@ -132,8 +133,26 @@ export default function Hero({ projects }: HeroProps) {
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
             >
-              Graphic Designer focused on editorial design, posters, and visual storytelling for print and digital experiences.
+              Creating posters, editorial layouts, branding identities and visual stories that communicate before they decorate.
             </motion.p>
+
+            {/* Action buttons */}
+            <div className="flex flex-wrap gap-4 pt-2">
+              <button
+                onClick={() => handleScrollTo("collection")}
+                data-cursor="click"
+                className="px-6 py-3 bg-brand-primary hover:bg-brand-primary/95 text-paper-bg font-sans text-xs tracking-wider uppercase font-semibold transition-all duration-300 hover:shadow-md cursor-pointer"
+              >
+                View Work
+              </button>
+              <button
+                onClick={() => handleScrollTo("contact")}
+                data-cursor="click"
+                className="px-6 py-3 border border-paper-border hover:border-brand-primary/45 bg-paper-card text-brand-primary font-sans text-xs tracking-wider uppercase font-semibold transition-all duration-300 hover:shadow-sm cursor-pointer"
+              >
+                Get In Touch
+              </button>
+            </div>
           </div>
         </div>
 
@@ -158,7 +177,7 @@ export default function Hero({ projects }: HeroProps) {
                     <img
                       src={poster.imagePath}
                       alt={poster.title}
-                      className="w-full h-auto object-cover"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="pt-2 flex justify-between items-center font-mono text-[7px] text-secondary-text/80 px-0.5 select-none">
@@ -171,7 +190,7 @@ export default function Hero({ projects }: HeroProps) {
           </motion.div>
           <div className="flex justify-end pr-4 select-none">
             <span className="font-mono text-[7px] tracking-widest text-secondary-text/50 uppercase">
-              // VISIBLE ARCHIVE WORKS
+              // FEATURED VISIBLE WORK
             </span>
           </div>
         </div>

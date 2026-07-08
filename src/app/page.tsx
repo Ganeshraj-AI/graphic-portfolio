@@ -1,48 +1,50 @@
 import React from "react";
-import { CuratorTourProvider } from "@/components/CuratorTour";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import DesignWall from "@/components/DesignWall";
-import FeaturedExhibition from "@/components/FeaturedExhibition";
-import Experience from "@/components/Experience";
 import About from "@/components/About";
+import DesignWall from "@/components/DesignWall";
+import Process from "@/components/Process";
+import Skills from "@/components/Skills";
+import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { getProjects, getProfileImage } from "@/data/projectsServer";
 
 export default function Home() {
-  // Read our real graphic assets dynamic data
   const projects = getProjects();
   const profileImage = getProfileImage();
 
   return (
-    <CuratorTourProvider>
-      {/* Sticky Digital Header */}
+    <div className="min-h-screen flex flex-col">
+      {/* Sticky Header */}
       <Navbar />
 
-      {/* Main Page Layout representing the gallery rooms */}
+      {/* Main scannable homepage rooms */}
       <main className="flex-grow flex flex-col">
-        {/* Room 01: The Entrance */}
+        {/* 01 // Hero */}
         <Hero projects={projects} />
 
-        {/* Room 02: Selected Collection (Design Wall Masonry Grid) */}
-        <DesignWall projects={projects} />
-
-        {/* Room 03: Featured Work (Spotlight Layout) */}
-        <FeaturedExhibition projects={projects} />
-
-        {/* Room 04: Professional Experience (Exhibition Label block) */}
-        <Experience />
-
-        {/* Room 05: The Designer (Biography & Portrait) */}
+        {/* 02 // About */}
         <About profileImage={profileImage} />
 
-        {/* Room 06: Contact (The Back Cover) */}
+        {/* 03 // Selected Work (Pinterest Masonry grid) */}
+        <DesignWall projects={projects} />
+
+        {/* 04 // My Process */}
+        <Process />
+
+        {/* 05 // Skills */}
+        <Skills />
+
+        {/* 06 // Experience Timeline */}
+        <Experience />
+
+        {/* 07 // Contact Back Cover */}
         <Contact />
       </main>
 
-      {/* Page Footer */}
+      {/* Simple Centered Footer */}
       <Footer />
-    </CuratorTourProvider>
+    </div>
   );
 }

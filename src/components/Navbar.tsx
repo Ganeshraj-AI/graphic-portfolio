@@ -2,13 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 import { useTheme } from "./ThemeProvider";
-import { useCuratorTour } from "./CuratorTour";
-import { Sun, Moon, Play } from "lucide-react";
+import { Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
-  const { isTourActive, startTour, exitTour } = useCuratorTour();
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("entrance");
 
@@ -16,7 +14,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      const sections = ["entrance", "collection", "featured", "experience", "designer", "contact"];
+      const sections = ["entrance", "about", "collection", "process", "skills", "experience", "contact"];
       const scrollPosition = window.scrollY + 150; // offset
 
       for (const section of sections) {
@@ -54,9 +52,11 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { name: "Collection", id: "collection" },
+    { name: "About", id: "about" },
+    { name: "Selected Work", id: "collection" },
+    { name: "Process", id: "process" },
+    { name: "Skills", id: "skills" },
     { name: "Experience", id: "experience" },
-    { name: "Designer", id: "designer" },
     { name: "Contact", id: "contact" }
   ];
 
@@ -81,33 +81,6 @@ export default function Navbar() {
         >
           GR
         </a>
-
-        {/* Center: Browse vs Curated Tour mode */}
-        <div className="flex border border-paper-border rounded-full p-0.5 bg-paper-card shadow-sm select-none">
-          <button
-            onClick={exitTour}
-            data-cursor="click"
-            className={`px-3 py-1 rounded-full text-[9px] tracking-wider uppercase font-sans font-bold transition-all duration-300 ${
-              !isTourActive
-                ? "bg-brand-primary text-paper-bg"
-                : "text-secondary-text hover:text-brand-primary"
-            }`}
-          >
-            Browse
-          </button>
-          <button
-            onClick={startTour}
-            data-cursor="click"
-            className={`px-3 py-1 rounded-full text-[9px] tracking-wider uppercase font-sans font-bold flex items-center gap-1 transition-all duration-300 ${
-              isTourActive
-                ? "bg-brand-primary text-paper-bg"
-                : "text-secondary-text hover:text-brand-primary"
-            }`}
-          >
-            <Play className="w-2 h-2 fill-current" />
-            Curated Tour
-          </button>
-        </div>
 
         {/* Navigation & Theme Toggle */}
         <div className="flex items-center space-x-6 md:space-x-8">

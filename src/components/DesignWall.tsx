@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Maximize2 } from "lucide-react";
+import { X, Maximize2, ArrowRight } from "lucide-react";
 import { CropMarks } from "./PrintMarks";
 import { Project } from "@/data/projectsMetadata";
 
@@ -24,7 +25,7 @@ export default function DesignWall({ projects }: DesignWallProps) {
   return (
     <section
       id="collection"
-      className="py-20 px-6 md:px-12 theme-offwhite bg-paper-bg text-body-text border-b border-paper-border transition-colors duration-1000 relative"
+      className="py-24 px-6 md:px-12 theme-offwhite bg-paper-bg text-body-text border-b border-paper-border transition-colors duration-1000 relative"
     >
       <CropMarks />
 
@@ -34,7 +35,7 @@ export default function DesignWall({ projects }: DesignWallProps) {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="space-y-3 max-w-xl">
             <span className="font-mono text-[9px] tracking-[0.25em] uppercase text-brand-gold font-bold block">
-              THE GRAPHIC ARCHIVE // COLLECTION
+              THE GRAPHIC ARCHIVE // SELECTED WORK
             </span>
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-brand-primary">
               Selected Work
@@ -60,8 +61,8 @@ export default function DesignWall({ projects }: DesignWallProps) {
           </div>
         </div>
 
-        {/* Full Image Masonry Grid (The Artwork is the UI) */}
-        <div className="masonry-grid columns-1 md:columns-2 lg:columns-3 gap-8">
+        {/* Full Image Masonry Grid with View Project triggers */}
+        <div className="masonry-grid columns-1 md:columns-2 lg:columns-3 gap-12">
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item, index) => {
               const rotationClass = index % 3 === 0 ? "hover:rotate-1" : index % 2 === 0 ? "hover:-rotate-1" : "hover:rotate-0.5";
@@ -75,12 +76,14 @@ export default function DesignWall({ projects }: DesignWallProps) {
                   transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
                   className="masonry-item"
                 >
-                  <div
-                    className={`flex flex-col gap-4 group cursor-pointer transition-all duration-500 ${rotationClass}`}
-                    onClick={() => setSelectedItem(item)}
-                  >
-                    {/* Poster artwork thumbnail (Full bleed) */}
-                    <div className="w-full relative overflow-hidden rounded-2xl shadow-sm border border-paper-border/40 bg-paper-card group-hover:shadow-[0_20px_40px_rgba(64,54,47,0.12)] group-hover:-translate-y-1.5 transition-all duration-500">
+                  <div className={`flex flex-col gap-5 group transition-all duration-500 ${rotationClass}`}>
+                    
+                    {/* Poster artwork thumbnail (Full bleed, Click opens Lightbox) */}
+                    <div 
+                      className="w-full relative overflow-hidden rounded-2xl shadow-sm border border-paper-border/40 bg-paper-card group-hover:shadow-[0_20px_40px_rgba(64,54,47,0.12)] group-hover:-translate-y-1.5 transition-all duration-500 cursor-pointer"
+                      onClick={() => setSelectedItem(item)}
+                      data-cursor="view"
+                    >
                       <img
                         src={item.imagePath}
                         alt={item.title}
@@ -92,21 +95,40 @@ export default function DesignWall({ projects }: DesignWallProps) {
                       </div>
                     </div>
 
-                    {/* Factual Monograph Caption underneath */}
-                    <div className="px-1 space-y-1.5">
-                      <h3 className="font-serif text-lg font-light text-brand-primary leading-tight text-misregistration cursor-default">
-                        {item.title}
-                      </h3>
-                      <div className="flex items-center gap-2 font-mono text-[9px] text-secondary-text">
-                        <span>{item.category}</span>
-                        {item.year && (
-                          <>
-                            <span className="opacity-45">•</span>
-                            <span>{item.year}</span>
-                          </>
-                        )}
+                    {/* Factual Monograph Caption + View Project Router link */}
+                    <div className="px-1 space-y-2.5">
+                      <div className="space-y-1">
+                        <div className="flex justify-between items-start">
+                          <h3 className="font-serif text-xl font-light text-brand-primary leading-tight text-misregistration cursor-default">
+                            {item.title}
+                          </h3>
+                          <span className="font-mono text-[9px] italic text-brand-gold font-bold">
+                            {item.year}
+                          </span>
+                        </div>
+                        <span className="font-mono text-[9px] uppercase tracking-wider text-secondary-text/80 block">
+                          {item.category}
+                        </span>
+                      </div>
+
+                      {/* One sentence description */}
+                      <p className="font-sans text-xs text-secondary-text font-light leading-relaxed">
+                        {item.desc}
+                      </p>
+
+                      {/* Link to dynamic page */}
+                      <div className="pt-1.5">
+                        <Link
+                          href={`/works/${item.slug}`}
+                          data-cursor="click"
+                          className="inline-flex items-center gap-2 font-sans text-[10px] tracking-widest uppercase text-brand-primary hover:text-brand-gold transition-colors duration-300 font-bold group/link"
+                        >
+                          View Project
+                          <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/link:translate-x-1" />
+                        </Link>
                       </div>
                     </div>
+
                   </div>
                 </motion.div>
               );

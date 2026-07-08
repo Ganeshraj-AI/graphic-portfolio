@@ -15,21 +15,20 @@ export default function Footer() {
     <footer className="py-16 px-6 md:px-12 bg-paper-bg border-t border-paper-border/60 text-center relative select-none">
       <div className="max-w-xl mx-auto flex flex-col items-center gap-4">
         
-        {/* Factual Monograph End */}
+        {/* Simple details */}
         <div>
           <span className="font-serif text-lg font-medium text-brand-primary block leading-none">
             Ganesh Raj
           </span>
           <span className="font-sans text-[10px] tracking-widest uppercase text-secondary-text block mt-2">
-            Graphic Designer // © 2026
+            Graphic Designer // Mumbai, India
+          </span>
+          <span className="font-sans text-[9px] tracking-wider text-secondary-text/80 block mt-1">
+            © 2026
           </span>
         </div>
 
         <div className="h-[1px] bg-paper-border w-16 my-1" />
-
-        <p className="font-sans text-[10px] tracking-wider text-secondary-text/80 leading-relaxed">
-          Designed & developed by Ganesh Raj.
-        </p>
 
         {/* Back to top anchor */}
         <button
