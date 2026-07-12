@@ -46,9 +46,20 @@ export default function About({ profileImage }: AboutProps) {
             <div className="h-[1px] bg-paper-border w-24 my-4" />
             
             {/* The Creative Identity positioning */}
-            <p className="font-serif text-xl md:text-2xl text-body-text leading-relaxed font-light max-w-2xl text-misregistration cursor-default">
-              I&apos;m Ganesh Raj, a graphic designer and BSc AI & ML student at Pillai College. I&apos;m also a Graphic Member of the College Magazine Committee. My interest lies in poster design, editorial layouts, branding, typography, and visual storytelling. I primarily design using Canva and Affinity Designer while continuously learning stronger design fundamentals. I believe design should communicate before it decorates.
-            </p>
+            <div className="space-y-5 max-w-2xl font-serif text-lg md:text-xl text-body-text leading-relaxed font-light text-misregistration cursor-default">
+              <p>
+                I&apos;m Ganesh Raj, a Graphic Designer and BSc Artificial Intelligence & Machine Learning student at Pillai College.
+              </p>
+              <p>
+                I&apos;m also a Graphic Member of the College Magazine Committee, where I create posters, editorial layouts and visual communication.
+              </p>
+              <p>
+                I primarily design using Canva and Affinity Designer, while continuously improving my understanding of branding, typography and layout design.
+              </p>
+              <p className="font-medium text-brand-gold italic">
+                I believe great design communicates before it decorates.
+              </p>
+            </div>
 
             {/* Factual Monospaced Log Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 pt-8 border-t border-paper-border/60">

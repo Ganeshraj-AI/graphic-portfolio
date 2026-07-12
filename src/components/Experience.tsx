@@ -71,33 +71,33 @@ export default function Experience() {
           <div className="h-[1px] bg-paper-border w-24 my-4 md:mx-auto" />
         </div>
 
-        {/* Unified Chronological Vertical Timeline */}
-        <div className="relative ml-4 md:ml-0 md:left-1/2 md:w-[1px] min-h-[500px]">
-          {/* Vertical center line on desktop, left line on mobile */}
-          <div className="absolute top-0 bottom-0 left-0 w-[1px] bg-paper-border/80 md:left-0" />
+        {/* Timeline Container */}
+        <div className="relative w-full">
           
-          <div className="space-y-12">
+          {/* Vertical timeline line - centered on desktop, left-aligned on mobile */}
+          <div className="absolute top-0 bottom-0 left-4 md:left-1/2 w-[1px] bg-paper-border/80 -translate-x-1/2 z-10" />
+
+          {/* Timeline Events Stack */}
+          <div className="relative w-full space-y-12">
             {timelineEvents.map((event, index) => {
               const isLeft = index % 2 === 0;
               return (
-                <div 
-                  key={index} 
-                  className={`relative pl-8 md:pl-0 md:w-1/2 group flex ${
-                    isLeft ? "md:mr-auto md:ml-0 md:justify-end" : "md:ml-auto md:mr-0 md:justify-start"
-                  }`}
+                <div
+                  key={index}
+                  className={`w-full relative flex flex-col md:flex-row pl-8 md:pl-0 ${
+                    isLeft ? "md:w-1/2 md:mr-auto md:ml-0 md:justify-end md:pr-10" : "md:w-1/2 md:ml-auto md:mr-0 md:justify-start md:pl-10"
+                  } group`}
                 >
                   {/* Timeline center node dot */}
-                  <div 
-                    className={`absolute w-3 h-3 rounded-full bg-brand-gold border-2 border-paper-bg z-20 group-hover:scale-125 transition-transform duration-300 left-[-6px] md:left-auto md:right-auto ${
-                      isLeft ? "md:right-0 md:translate-x-[6px]" : "md:left-0 md:translate-x-[-6px]"
-                    } top-2.5`} 
+                  <div
+                    className={`absolute w-3 h-3 rounded-full bg-brand-gold border-2 border-paper-bg z-20 group-hover:scale-125 transition-transform duration-300 left-[10px] -translate-x-1/2 top-7 md:left-auto ${
+                      isLeft ? "md:right-0 md:translate-x-1/2" : "md:left-0 md:-translate-x-1/2"
+                    }`}
                   />
 
                   {/* Event Card Container */}
-                  <div 
-                    className={`max-w-md w-full bg-paper-card border border-paper-border/70 p-6 rounded-2xl shadow-sm transition-all duration-500 hover:shadow-md ${
-                      isLeft ? "md:mr-10 text-left" : "md:ml-10 text-left"
-                    }`}
+                  <div
+                    className={`w-full md:w-[92%] bg-paper-card border border-paper-border/70 p-6 rounded-2xl shadow-sm transition-all duration-500 hover:shadow-md text-left`}
                   >
                     <span className="font-mono text-[9px] text-brand-gold font-bold block mb-1">
                       {event.year} //

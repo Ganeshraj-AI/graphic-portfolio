@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Mail, Check, FileText, ArrowRight } from "lucide-react";
+import { Mail, Check } from "lucide-react";
 import { CropMarks, RegistrationMark } from "./PrintMarks";
 
 const LinkedInIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -88,8 +88,8 @@ export default function Contact() {
 
           <div className="h-[1px] bg-paper-border w-32" />
 
-          {/* Recruiter-friendly coordinates */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full pt-4">
+          {/* Clean Email & LinkedIn Coordinates */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full pt-4">
             
             {/* Email - Copy on Tap */}
             <button
@@ -154,22 +154,6 @@ export default function Contact() {
                 Coming Soon
               </span>
             </div>
-
-            {/* Download Resume Button */}
-            <a
-              href="/assets/resume.pdf"
-              download
-              data-cursor="click"
-              className="bg-paper-card border border-paper-border p-6 rounded-2xl flex flex-col items-center justify-center gap-2 hover:-translate-y-1.5 hover:border-brand-gold/60 transition-all duration-300 -rotate-1 hover:rotate-0 shadow-sm w-full text-center col-span-1 sm:col-span-2 lg:col-span-1"
-            >
-              <FileText className="w-5 h-5 text-brand-primary animate-pulse" />
-              <span className="font-mono text-[9px] tracking-widest uppercase text-brand-gold font-bold">
-                RESUME
-              </span>
-              <span className="font-sans text-[10px] text-secondary-text flex items-center gap-1 font-semibold">
-                Download PDF <ArrowRight className="w-3 h-3" />
-              </span>
-            </a>
 
           </div>
 
