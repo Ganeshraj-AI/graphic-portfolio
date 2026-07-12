@@ -2,7 +2,6 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
 import { Project } from "@/data/projectsMetadata";
 
 interface HeroProps {
@@ -74,51 +73,53 @@ export default function Hero({ projects }: HeroProps) {
       id="entrance"
       className="min-h-screen theme-cream bg-paper-bg text-body-text border-b border-paper-border flex flex-col justify-between pt-28 pb-6 overflow-hidden transition-colors duration-1000"
     >
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center flex-grow">
+      <div className="max-w-7xl mx-auto w-full px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center flex-grow">
         
         {/* Left Column: Bold Typography & Philosophy */}
         <div className="lg:col-span-7 flex flex-col justify-center space-y-8 z-10">
-          <div className="space-y-4">
-            
+          
+          <div className="space-y-6">
             {/* Available for Work badge with green pulsing dot */}
-            <div className="inline-flex items-center gap-2 bg-paper-card border border-paper-border px-3.5 py-1.5 rounded-full select-none shadow-sm">
+            <div className="inline-flex items-center gap-2 bg-paper-card border border-paper-border px-3.5 py-1.5 rounded-full select-none shadow-sm mb-2">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
               <span className="font-mono text-[8px] tracking-widest uppercase text-secondary-text font-bold">
                 Available for Work
               </span>
             </div>
+
+            {/* Subtle, Elegant Editorial Label (Masthead style) */}
+            <div className="space-y-1 pl-4 border-l border-brand-gold/60 select-none">
+              <span className="font-serif text-xl md:text-2xl font-light tracking-wide text-brand-primary block leading-none">
+                Ganesh Raj
+              </span>
+              <span className="font-mono text-[9px] tracking-[0.25em] uppercase text-secondary-text block">
+                Graphic Designer • Visual Storyteller
+              </span>
+            </div>
             
-            {/* Bold broken typography layout */}
-            <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-light leading-[0.95] tracking-tighter text-brand-primary">
+            {/* Clean Statement Heading as Primary Focus */}
+            <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-light leading-[0.95] tracking-tighter text-brand-primary select-none">
               <motion.span
                 className="block text-outline-thick text-body-text opacity-95 cursor-default text-misregistration"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 }}
               >
-                Ganesh Raj
+                Creating visuals
               </motion.span>
               <motion.span
-                className="block font-sans font-black tracking-widest text-3xl sm:text-4xl md:text-5xl lg:text-6xl pl-4 py-1"
+                className="block font-alt-serif italic font-normal pl-4 py-1 text-misregistration"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                DESIGNER
+                that
               </motion.span>
               <motion.span
-                className="block font-alt-serif italic font-normal pl-8 cursor-default text-misregistration"
+                className="block font-sans font-black tracking-tight pl-8 text-brand-gold"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-              >
-                Creating visuals that
-              </motion.span>
-              <motion.span
-                className="block font-sans font-medium tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl pl-12 text-brand-gold"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
               >
                 people remember.
               </motion.span>
@@ -131,7 +132,7 @@ export default function Hero({ projects }: HeroProps) {
               className="font-sans text-base md:text-lg text-secondary-text leading-relaxed font-light"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
+              transition={{ duration: 1, delay: 0.4 }}
             >
               Creating posters, editorial layouts, branding identities and visual stories that communicate before they decorate.
             </motion.p>
@@ -162,7 +163,7 @@ export default function Hero({ projects }: HeroProps) {
             className="grid grid-cols-2 gap-4 w-full"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6 }}
+            transition={{ duration: 1, delay: 0.5 }}
           >
             {heroPosters.map((poster, index) => {
               const rotation = index === 0 ? "-rotate-2" : "rotate-2";
