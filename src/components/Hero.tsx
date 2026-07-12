@@ -100,7 +100,7 @@ export default function Hero({ projects }: HeroProps) {
             {/* Clean Statement Heading as Primary Focus */}
             <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-light leading-[0.95] tracking-tighter text-brand-primary select-none">
               <motion.span
-                className="block text-outline-thick text-body-text opacity-95 cursor-default text-misregistration"
+                className="block text-body-text opacity-95 cursor-default text-misregistration"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 }}
