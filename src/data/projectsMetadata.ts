@@ -95,5 +95,53 @@ export const projectsMetadata: Record<string, Partial<Project>> = {
     ],
     outlineText: "BOND",
     featured: false
+  },
+  "Design with purpose.png": {
+    title: "Design with Purpose",
+    category: "Poster Prints",
+    year: "2025",
+    tools: "Canva, Affinity Designer",
+    dimensions: "1200 × 1600 px",
+    status: "Published",
+    desc: "A visually commanding layout poster showcasing high-contrast editorial typography and geometric composition.",
+    problem: "Structuring asymmetrical visual layouts while maintaining strict print alignment rules.",
+    audience: "Design students and layout purists looking for structural graphic guidelines.",
+    colors: [
+      { hex: "#7A1F2B", name: "Wine Red" },
+      { hex: "#FAF7F2", name: "Warm Cream" },
+      { hex: "#C89B3C", name: "Muted Gold" },
+      { hex: "#161311", name: "Charcoal" }
+    ],
+    fonts: ["Cormorant Garamond", "Manrope"],
+    lessons: [
+      "Grids establish visual balance across asymmetrical shapes.",
+      "Negative space behaves as an active layout framing element."
+    ],
+    outlineText: "GRID",
+    featured: false
+  },
+  "Independence Day.png": {
+    title: "Independence Day",
+    category: "Poster Prints",
+    year: "2025",
+    tools: "Canva",
+    dimensions: "1080 × 1350 px",
+    status: "Published",
+    desc: "A patriotic visual celebration combining traditional cultural elements with clean modern framing.",
+    problem: "Balancing strong symbolic colors in a restrained layout framework without visually crowding elements.",
+    audience: "College campus visitors and patriotic observers looking for design clarity.",
+    colors: [
+      { hex: "#E05A17", name: "Saffron" },
+      { hex: "#2E5E4E", name: "Ashoka Green" },
+      { hex: "#1D3557", name: "Navy Blue" },
+      { hex: "#FAF7F2", name: "Warm White" }
+    ],
+    fonts: ["Playfair Display", "Inter"],
+    lessons: [
+      "Restraint in color saturation grounds high-contrast layout designs.",
+      "Borders behave as structural stabilizers for organic assets."
+    ],
+    outlineText: "FREE",
+    featured: false
   }
 };
