@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import DesignWall from "@/components/DesignWall";
+import Branding from "@/components/Branding";
 import Process from "@/components/Process";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
@@ -30,16 +31,19 @@ export default function Home() {
         {/* 03 // Selected Work (Pinterest Masonry grid) */}
         <DesignWall projects={projects} />
 
-        {/* 04 // My Process */}
+        {/* 04 // Branding (Drift Case Study Deck) */}
+        <Branding />
+
+        {/* 05 // My Process */}
         <Process />
 
-        {/* 05 // Skills */}
+        {/* 06 // Skills */}
         <Skills />
 
-        {/* 06 // Experience Timeline */}
+        {/* 07 // Experience Timeline */}
         <Experience />
 
-        {/* 07 // Contact Back Cover */}
+        {/* 08 // Contact Back Cover */}
         <Contact />
       </main>
 
