@@ -143,5 +143,29 @@ export const projectsMetadata: Record<string, Partial<Project>> = {
     ],
     outlineText: "FREE",
     featured: false
+  },
+  "drift.png": {
+    title: "Drift",
+    category: "Brand Identity",
+    year: "2026",
+    tools: "Canva, Illustrator, Figma",
+    dimensions: "15-Page Deck",
+    status: "Published",
+    desc: "A complete visual identity and product branding exploration for my AI-powered expense tracking application.",
+    problem: "Designing a financial brand that feels conversational, trust-building, and effortless without losing analytical clarity.",
+    audience: "Young professionals seeking a frictionless, AI-assisted method to track personal finance workflows.",
+    colors: [
+      { hex: "#00E5FF", name: "Drift Teal" },
+      { hex: "#121212", name: "Deep Charcoal" },
+      { hex: "#FAF7F2", name: "Warm White" },
+      { hex: "#C89B3C", name: "Muted Gold" }
+    ],
+    fonts: ["Inter", "Cormorant Garamond"],
+    lessons: [
+      "AI brand cues should feel conversational rather than technical.",
+      "Minimalist financial tools increase user engagement."
+    ],
+    outlineText: "DRIFT",
+    featured: false
   }
 };

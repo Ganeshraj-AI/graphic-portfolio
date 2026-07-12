@@ -4,12 +4,17 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, Check, Copy } from "lucide-react";
 import { Project } from "@/data/projectsMetadata";
+import DriftBrandingPage from "./DriftBrandingPage";
 
 interface ProjectClientPageProps {
   project: Project;
 }
 
 export default function ProjectClientPage({ project }: ProjectClientPageProps) {
+  if (project.slug === "drift") {
+    return <DriftBrandingPage project={project} />;
+  }
+
   const [copiedColor, setCopiedColor] = useState<string | null>(null);
 
   const handleCopyHex = (hex: string) => {
